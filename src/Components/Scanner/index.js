@@ -39,7 +39,8 @@ const scannerLoader  = (mode) => {
                 facingMode: "environment" 
               } 
             }}
-            // captureSize={{ width: 200, height: 200 }}
+            captureSize={{ width: 1280, height: 720 }}
+
           />
 
 
