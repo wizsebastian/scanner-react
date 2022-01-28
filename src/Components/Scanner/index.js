@@ -14,8 +14,13 @@ const ScannerComponent = (props) => {
 
 const decode = (result) => {
     console.log(result);
-    alert("Escaneado con exito!!!")
-    window.location.href = result.data;
+    if (window.screen.width <= 699) {
+        alert("Escaneado desde el movil con exito!!!");
+        window.location = "w3docs.com";
+    }else{
+        alert("Escaneado con exito!!!");
+        window.location.href = result.data;
+    }
 }
 const scannerLoader  = (mode) => {
     console.log( mode);
