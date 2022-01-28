@@ -14,6 +14,7 @@ const ScannerComponent = (props) => {
 
 const decode = (result) => {
     console.log(result);
+    alert("Escaneado con exito!!!")
     window.location.href = result.data;
 }
 const scannerLoader  = (mode) => {
