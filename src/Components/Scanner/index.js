@@ -2,7 +2,6 @@ import React from "react";
 import Scanner from "react-webcam-qr-scanner";
 
 const ScannerComponent = (props) => {
-const scanner_result = 'GO'
   const handleDecode = (result) => {
     // alert('Tu QR fue: ', result.data);
     console.log(result.data);
