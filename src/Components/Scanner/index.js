@@ -1,51 +1,35 @@
-import React from "react";
-import Scanner from "react-webcam-qr-scanner";
+import React, { Component } from 'react'
+import QrReader from 'react-qr-reader'
 
-const ScannerComponent = (props) => {
-//   const handleDecode = (result) => {
-//     // alert('Tu QR fue: ', result.data);
-//     // alert("Tu QR: ", result.data)\
-//     // alert("Escaneado con exito!!!")
+class ScannerComponent extends Component {
+  state = {
+    result: 'No result'
+  }
 
-//     // scanner_result = result.data
-//     //  scanner_result = window.localStorage.setItem('currentQR', JSON.stringify(result.data))
-// } 
-// //   scanner_result = String(handleDecode);
-
-const decode = (result) => {
-    console.log(result);
-    if (window.screen.width <= 699) {
-        alert("Escaneado desde el movil con exito!!!");
-        window.location = "w3docs.com";
-    }else{
-        alert("Escaneado con exito!!!");
-        window.location.href = result.data;
+  handleScan = data => {
+    if (data) {
+      this.setState({
+        result: data
+      })
     }
-}
-const scannerLoader  = (mode) => {
-    console.log( mode);
-}
-
-
-
-  return (
-          <Scanner 
-            className="some-classname"
-            onDecode={decode}
-            onScannerLoad={scannerLoader}
-            constraints={{ 
-              audio: false, 
-              video: { 
-                facingMode: "environment" 
-              } 
-            }}
-            captureSize={{ width: 1280, height: 720 }}
-
-          />
-
-
-
-  );
+  }
+  handleError = err => {
+    console.error(err)
+  }
+  render() {
+    return (
+      <div>
+        <QrReader
+          delay={300}
+          onError={this.handleError}
+          onScan={this.handleScan}
+          style={{ width: '100%' }}
+        />
+        <h1>Tu TOKEN LINK es: </h1>
+        <a href={this.state.result}>{this.state.result}</a>
+      </div>
+    )
+  }
 }
 
 export default ScannerComponent;
